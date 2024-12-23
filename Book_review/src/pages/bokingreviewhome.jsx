@@ -9,6 +9,14 @@ import images2 from "../images/images2.jpg";
 import images3 from "../images/images3.jpg";
 import images4 from "../images/images4.jpg";
 import images5 from "../images/images5.jpg";
+import bc from "../images/bc.jpg";
+import k1 from "../images/k1.jpg";
+import k2 from "../images/k2.jpg";
+import k3 from "../images/k3.jpg";
+import k4 from "../images/k4.jpeg";
+
+
+
 
 const BookReviewHome = () => {
   const navigate = useNavigate();
@@ -44,10 +52,25 @@ const BookReviewHome = () => {
           padding: "100px 20px",
         }}
       >
-        <h1 style={{ fontSize: "3.5rem", marginBottom: "20px" }}>Book Review Hub</h1>
-        <p style={{ fontSize: "1.5rem", marginBottom: "30px" }}>
-          Discover reviews, share your thoughts, and explore your next great read.
-        </p>
+       <div
+  style={{
+    backgroundImage: `url(${bc})`, // Use the imported image as background
+    backgroundSize: "cover",  // Ensures the background image covers the entire area
+    backgroundPosition: "center",  // Centers the background image
+    width: "100%", // Full width of the parent container
+    height: "500px", // Set height as per your preference (can be adjusted)
+    padding: "50px 20px",  // Adds padding for spacing
+    color: "#fff",  // White text color to contrast with the background
+    textAlign: "center",  // Centers the text
+  }}
+>
+  <h1 style={{ fontSize: "3.5rem", marginBottom: "20px" }}>
+    Book Review Hub
+  </h1>
+  <p style={{ fontSize: "1.5rem", marginBottom: "30px" }}>
+    Discover reviews, share your thoughts, and explore your next great read.
+  </p>
+</div>
         <button
           style={{
             backgroundColor: "#ffc107",
@@ -104,7 +127,7 @@ const BookReviewHome = () => {
                   src={book.img}
                   alt={book.title}
                   style={{
-                    width: "100%",
+                    width: "70%",
                     borderRadius: "10px",
                     marginBottom: "15px",
                   }}
@@ -130,6 +153,192 @@ const BookReviewHome = () => {
           ))}
         </div>
       </section>
+      <section style={{ padding: "50px 20px", backgroundColor: "#f4f7fa" }}>
+  <h2 style={{ fontSize: "2.5rem", textAlign: "center", marginBottom: "40px" }}>
+    Popular with Kids
+  </h2>
+
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-around",
+      flexWrap: "wrap",
+      gap: "20px",
+      margin: "0 auto",
+      maxWidth: "1200px",
+    }}
+  >
+    {/* Card 1 */}
+    <div
+      style={{
+        backgroundColor: "#fff",
+        width: "250px",
+        borderRadius: "10px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        overflow: "hidden",
+      }}
+    >
+      <img
+        src={k1} // Image k1
+        alt="Book Title 1"
+        style={{
+          width: "100%",
+          height: "350px",
+          objectFit: "cover",
+        }}
+      />
+      <div style={{ padding: "15px" }}>
+        <h3 style={{ fontSize: "1.5rem", marginBottom: "10px" }}>
+          Book Title 1
+        </h3>
+        <p style={{ fontSize: "1.1rem", color: "#555" }}>
+          A short description of the book. Perfect for kids.
+        </p>
+        <button
+          style={{
+            backgroundColor: "#28a745",
+            color: "#fff",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "6px",
+            cursor: "pointer",
+            marginTop: "10px",
+          }}
+        >
+          Read More
+        </button>
+      </div>
+    </div>
+
+    {/* Card 2 */}
+    <div
+      style={{
+        backgroundColor: "#fff",
+        width: "250px",
+        borderRadius: "10px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        overflow: "hidden",
+      }}
+    >
+      <img
+        src={k2} // Image k2
+        alt="Book Title 2"
+        style={{
+          width: "100%",
+          height: "350px",
+          objectFit: "cover",
+        }}
+      />
+      <div style={{ padding: "15px" }}>
+        <h3 style={{ fontSize: "1.5rem", marginBottom: "10px" }}>
+          Book Title 2
+        </h3>
+        <p style={{ fontSize: "1.1rem", color: "#555" }}>
+          A short description of the book. Perfect for kids.
+        </p>
+        <button
+          style={{
+            backgroundColor: "#28a745",
+            color: "#fff",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "6px",
+            cursor: "pointer",
+            marginTop: "10px",
+          }}
+        >
+          Read More
+        </button>
+      </div>
+    </div>
+
+    {/* Card 3 */}
+    <div
+      style={{
+        backgroundColor: "#fff",
+        width: "250px",
+        borderRadius: "10px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        overflow: "hidden",
+      }}
+    >
+      <img
+        src={k3} // Image k3
+        alt="Book Title 3"
+        style={{
+          width: "100%",
+          height: "350px",
+          objectFit: "cover",
+        }}
+      />
+      <div style={{ padding: "15px" }}>
+        <h3 style={{ fontSize: "1.5rem", marginBottom: "10px" }}>
+          Book Title 3
+        </h3>
+        <p style={{ fontSize: "1.1rem", color: "#555" }}>
+          A short description of the book. Perfect for kids.
+        </p>
+        <button
+          style={{
+            backgroundColor: "#28a745",
+            color: "#fff",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "6px",
+            cursor: "pointer",
+            marginTop: "10px",
+          }}
+        >
+          Read More
+        </button>
+      </div>
+    </div>
+
+    {/* Card 4 */}
+    <div
+      style={{
+        backgroundColor: "#fff",
+        width: "250px",
+        borderRadius: "10px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        overflow: "hidden",
+      }}
+    >
+      <img
+        src={k4} // Image k4
+        alt="Book Title 4"
+        style={{
+          width: "100%",
+          height: "350px",
+          objectFit: "cover",
+        }}
+      />
+      <div style={{ padding: "15px" }}>
+        <h3 style={{ fontSize: "1.5rem", marginBottom: "10px" }}>
+          Book Title 4
+        </h3>
+        <p style={{ fontSize: "1.1rem", color: "#555" }}>
+          A short description of the book. Perfect for kids.
+        </p>
+        <button
+          style={{
+            backgroundColor: "#28a745",
+            color: "#fff",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "6px",
+            cursor: "pointer",
+            marginTop: "10px",
+          }}
+        >
+          Read More
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       {/* Join Us Section */}
       <section

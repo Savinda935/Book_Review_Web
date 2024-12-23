@@ -48,7 +48,7 @@ const Header = () => {
               padding: "0",
             }}
           >
-            {[{ name: "Home", link: "/" }, { name: "Bookings", link: "/bookings" }, { name: "About", link: "/about" }, { name: "Contact", link: "/contact" }].map((item, index) => (
+            {[{ name: "Home", link: "/" }, { name: "Book Reviews", link: "/bookings" }, { name: "Magazine", link: "/about" }, { name: "News", link: "/contact" }].map((item, index) => (
               <li
                 key={index}
                 style={{
@@ -171,7 +171,7 @@ const Header = () => {
               textAlign: "center",
             }}
           >
-            {[{ name: "Home", link: "/" }, { name: "Bookings", link: "/bookings" }, { name: "About", link: "/about" }, { name: "Contact", link: "/contact" }].map((item, index) => (
+            {[{ name: "Home", link: "/" }, { name: "Book Reviews", link: "/bookings" }, { name: "News & Features", link: "/about" }, { name: "Magazine", link: "/contact" }].map((item, index) => (
               <li
                 key={index}
                 style={{

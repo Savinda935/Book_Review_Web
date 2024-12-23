@@ -16,27 +16,39 @@ const ReviewDetailsPage = () => {
   useEffect(() => {
     const fetchReviewData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8082/Booking/${id}`);
-        setReview(response.data);
-        setIsLoading(false);
+        const response = await fetch("http://localhost:8083/Booking/");
+        
+        if (!response.ok) {
+          throw new Error("Error fetching review data");
+        }
+  
+        // Parse the JSON response
+        const data = await response.json();
+  
+        console.log("API Response:", data); // Log the response data
+        setReview(data);  // Set review data into state
+        setIsLoading(false); // Update loading state
       } catch (error) {
+        console.error("Error fetching review data:", error);
         setMessage("Error fetching review data.");
-        setIsLoading(false);
+        setIsLoading(false); // Update loading state even if there's an error
       }
     };
-
+  
     fetchReviewData();
-  }, [id]);
+  }, []);
+  
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this review?");
     if (confirmDelete) {
       try {
-        const response = await axios.delete(`http://localhost:8082/Booking/delete/${id}`);
+        // Make the delete request to delete all reviews or specific one based on the condition (without ID)
+        const response = await axios.delete("http://localhost:8083/Booking/delete");
         if (response.status === 200) {
-          setMessage("Review deleted successfully.");
-          // Redirect to a different page (e.g., homepage or reviews list)
-          navigate("/reviews"); // Updated to use navigate()
+          setMessage("All reviews deleted successfully.");
+          // Fetch the updated reviews list if necessary
+          setReview(null);  // Clear the review data if deleting all reviews
         } else {
           setMessage("Failed to delete the review.");
         }
@@ -45,6 +57,7 @@ const ReviewDetailsPage = () => {
       }
     }
   };
+  
 
   const handleEdit = () => {
     // Navigate to the edit page
