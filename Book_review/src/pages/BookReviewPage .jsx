@@ -132,6 +132,7 @@ const BookReviewPage = () => {
               }}
             />
           </div>
+          
 
           {/* Book Review Form Section */}
           <div
@@ -241,6 +242,7 @@ const BookReviewPage = () => {
                 {message}
               </div>
             )}
+            
 
             {/* Review Details Button */}
             <button
@@ -273,6 +275,72 @@ const BookReviewPage = () => {
             )}
           </div>
         </section>
+        <section style={{ fontFamily: 'Arial, sans-serif', padding: '20px', backgroundColor: '#f1f1f1', borderRadius: '10px' }}>
+  <h1 style={{ fontSize: '2.5rem', color: '#4b4b4b', marginBottom: '20px' }}>IMPOSSIBLE CREATURES</h1>
+  <p style={{ fontSize: '1.2rem', color: '#333', marginBottom: '20px', fontWeight: 'bold' }}>
+    From the <em style={{ color: '#6c757d' }}>Impossible Creatures</em> series, Vol. 1
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '20px' }}>
+    by <strong>Katherine Rundell</strong>; illustrated by <strong>Ashley Mackenzie</strong> ‧
+    <span style={{ color: '#ff5722', fontWeight: 'bold' }}>RELEASE DATE: Sept. 10, 2024</span>
+  </p>
+  <h2 style={{ fontSize: '1.8rem', color: '#4b4b4b', marginBottom: '20px' }}>An epic fantasy with timeless themes and unforgettable characters.</h2>
+  <p style={{ fontSize: '1.2rem', color: '#333', marginBottom: '20px' }}>
+    Two young people save the world and all the magic in it in this series opener.
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '20px' }}>
+    When tall, dark-haired, white-skinned <strong>Christopher Forrester</strong> goes to stay with his grandfather in Scotland,
+    he ventures to the top of a forbidden hill and discovers astonishing magical creatures.
+    His grandfather explains that Christopher’s family are guardians of the “way through” to the Archipelago,
+    where the Glimourie Tree grows—the source of glimourie, or the world’s magic.
+    <strong>Black-haired, olive-skinned Mal Arvorian</strong>, a girl from the Archipelago, is being pursued by a murderer,
+    and she asks Christopher for help, launching them both on a wild, dangerous journey to discover why the glimourie is disappearing
+    and how to stop it.
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '20px' }}>
+    Together with a part-nereid woman, a ratatoska, a dragon, and a Berserker, they face an odyssey of dangerous tasks to find the Immortal,
+    the only one who can reverse the draining of magic. Like Lyra and Will from Philip Pullman’s <em style={{ color: '#6c757d' }}>His Dark Materials</em>,
+    Mal and Christopher sacrifice their innocence for experience, meeting every challenge with depthless courage until they finally reach
+    the maze at the heart of it all.
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '20px' }}>
+    Rundell throws myriad obstacles in her characters’ way, but she gives them tools both tangible (a casapasaran, which always points the way home,
+    and the glamry blade, which cuts through anything) and intangible (the desire “to protect something worth protecting” and an “insistence
+    that the world is worth loving”).
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '20px' }}>
+    <strong>Final art not seen.</strong>
+  </p>
+  <p style={{ fontSize: '1.2rem', color: '#4b4b4b', marginTop: '20px' }}>
+    An epic fantasy with timeless themes and unforgettable characters. <span style={{ color: '#007bff' }}>(map, bestiary)</span>
+    <span style={{ color: '#007bff' }}>(Fantasy. 10-16)</span>
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555', marginTop: '20px' }}>
+    <strong>Pub Date:</strong> Sept. 10, 2024
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555' }}>
+    <strong>ISBN:</strong> 9780593809860
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555' }}>
+    <strong>Page Count:</strong> 368
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555' }}>
+    <strong>Publisher:</strong> Knopf
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555' }}>
+    <strong>Review Posted Online:</strong> May 30, 2024
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555' }}>
+    <strong>Kirkus Reviews Issue:</strong> July 1, 2024
+  </p>
+  <p style={{ fontSize: '1.1rem', color: '#555' }}>
+    Categories:
+    <span style={{ fontWeight: 'bold', color: '#007bff' }}>CHILDREN'S DRAGONS & MYTHICAL CREATURES | </span>
+    <span style={{ fontWeight: 'bold', color: '#007bff' }}>CHILDREN'S SCIENCE FICTION & FANTASY | </span>
+    <span style={{ fontWeight: 'bold', color: '#007bff' }}>TEENS & YOUNG ADULT SCIENCE FICTION & FANTASY</span>
+  </p>
+</section>
+
       </main>
 
       <Footer />

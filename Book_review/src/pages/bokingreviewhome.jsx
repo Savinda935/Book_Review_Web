@@ -14,6 +14,7 @@ import k1 from "../images/k1.jpg";
 import k2 from "../images/k2.jpg";
 import k3 from "../images/k3.jpg";
 import k4 from "../images/k4.jpeg";
+import bc1 from "../images/bc1.jpg";
 
 
 
@@ -64,12 +65,13 @@ const BookReviewHome = () => {
     textAlign: "center",  // Centers the text
   }}
 >
-  <h1 style={{ fontSize: "3.5rem", marginBottom: "20px" }}>
-    Book Review Hub
-  </h1>
-  <p style={{ fontSize: "1.5rem", marginBottom: "30px" }}>
-    Discover reviews, share your thoughts, and explore your next great read.
-  </p>
+<h1 style={{ fontSize: "3.5rem", marginBottom: "20px", color: "black" }}>
+  Book Review Hub
+</h1>
+<p style={{ fontSize: "2.5rem", marginBottom: "30px", color: "black" }}>
+  Discover reviews, share your thoughts, and explore your next great read.
+</p>
+
 </div>
         <button
           style={{
@@ -342,32 +344,36 @@ const BookReviewHome = () => {
 
       {/* Join Us Section */}
       <section
-        style={{
-          padding: "50px",
-          textAlign: "center",
-          backgroundColor: "#f8f9fa",
-        }}
-      >
-        <h2 style={{ fontSize: "2.5rem", color: "#6c757d", marginBottom: "20px" }}>
-          Join Our Community
-        </h2>
-        <p style={{ fontSize: "1.2rem", color: "#666", marginBottom: "30px" }}>
-          Be a part of a vibrant community of book enthusiasts. Share your reviews and discover your next favorite book.
-        </p>
-        <button
-          style={{
-            backgroundColor: "#ffc107",
-            color: "#000",
-            padding: "15px 30px",
-            fontSize: "1rem",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Join Now
-        </button>
-      </section>
+  style={{
+    padding: "50px",
+    textAlign: "center",
+    backgroundImage: `url(${bc1})`, // Background image
+    backgroundSize: "cover", // Ensures the image covers the section
+    backgroundPosition: "center", // Centers the image
+    color: "white", // Change text color to white
+  }}
+>
+  <h2 style={{ fontSize: "2.5rem", marginBottom: "20px" }}>
+    Join Our Community
+  </h2>
+  <p style={{ fontSize: "1.2rem", marginBottom: "30px" }}>
+    Be a part of a vibrant community of book enthusiasts. Share your reviews and discover your next favorite book.
+  </p>
+  <button
+    style={{
+      backgroundColor: "#ffc107", // Button color
+      color: "#000", // Text color on the button
+      padding: "15px 30px",
+      fontSize: "1rem",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+    }}
+  >
+    Join Now
+  </button>
+</section>
+
 
       <Footer />
     </div>

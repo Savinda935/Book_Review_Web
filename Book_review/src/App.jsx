@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import BookReviewHome from "./pages/bokingreviewhome";
-import ColomboDay from "./pages/colomboday";
+import ColomboDay from "./pages/BookReviewPage ";
 import BookingDetailsPage from "./pages/bokkingdetais";
 import ReviewDetailsPage from "./pages/reviewdetails";
 

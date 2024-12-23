@@ -1,12 +1,13 @@
 import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import footerbc from "../images/footerbc.jpg";
+import bc2 from "../images/bc2.jpg";
 
 const Footer = () => {
   return (
     <footer
       style={{
-        backgroundImage: `url(${footerbc})`,
+        backgroundImage: `url(${bc2})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         color: "#fff",
