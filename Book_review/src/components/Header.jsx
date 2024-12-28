@@ -48,7 +48,7 @@ const Header = () => {
               padding: "0",
             }}
           >
-            {[{ name: "Home", link: "/" }, { name: "Book Reviews", link: "/bookings" }, { name: "Magazine", link: "/about" }, { name: "News", link: "/contact" }].map((item, index) => (
+            {[{ name: "Home", link: "/" }, { name: "Book Reviews", link: "/reviewdetails/:id" }, { name: "Magazine", link: "/about" }, { name: "News", link: "/contact" }].map((item, index) => (
               <li
                 key={index}
                 style={{

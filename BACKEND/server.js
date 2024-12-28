@@ -4,11 +4,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
-
-dotenv.config(); // Ensure environment variables are loaded
+dotenv.config(); // Load environment variables
 
 const app = express();
-const PORT = process.env.PORT || 8083; // Default port 8081 if not provided
+const PORT = process.env.PORT || 8083; // Default port
 
 // Middleware
 app.use(bodyParser.json());
@@ -26,9 +25,9 @@ mongoose
     .then(() => console.log("Mongodb connection successful!"))
     .catch((err) => console.error("Mongodb connection error:", err));
 
-// Import and use routes
-const bookingRouter = require("./routes/Booking");
-app.use("/Booking", bookingRouter);
+// Import and use the bookReview routes
+const bookReviewRouter = require("./routes/bookReview");
+app.use("/bookreview", bookReviewRouter);
 
 // Start the server
 app.listen(PORT, () => {

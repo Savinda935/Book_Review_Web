@@ -1,143 +1,152 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom"; // Updated for v6
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import images from "../images/images.jpg"; // Import the image
 
 const ReviewDetailsPage = () => {
-  const { id } = useParams(); // Getting the review ID from the URL parameters
-  const navigate = useNavigate(); // Updated to use useNavigate
-  
-  const [review, setReview] = useState(null);
+  const navigate = useNavigate();
+  const [reviews, setReviews] = useState([]);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+
+  // State for handling update
+  const [updatedBooking, setUpdatedBooking] = useState(null);
+  const [bookingStatus, setBookingStatus] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const fetchReviewData = async () => {
       try {
-        const response = await fetch("http://localhost:8083/Booking/");
-        
-        if (!response.ok) {
-          throw new Error("Error fetching review data");
-        }
-  
-        // Parse the JSON response
-        const data = await response.json();
-  
-        console.log("API Response:", data); // Log the response data
-        setReview(data);  // Set review data into state
-        setIsLoading(false); // Update loading state
+        const response = await axios.get("http://localhost:8083/bookreview");
+        console.log("Fetched reviews:", response.data); // Debugging log
+        setReviews(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching review data:", error);
         setMessage("Error fetching review data.");
-        setIsLoading(false); // Update loading state even if there's an error
+        setIsLoading(false);
       }
     };
-  
+
     fetchReviewData();
   }, []);
-  
 
-  const handleDelete = async () => {
+  const handleDelete = async (id) => {
+    console.log("Attempting to delete review with ID:", id); // Debugging log
     const confirmDelete = window.confirm("Are you sure you want to delete this review?");
     if (confirmDelete) {
       try {
-        // Make the delete request to delete all reviews or specific one based on the condition (without ID)
-        const response = await axios.delete("http://localhost:8083/Booking/delete");
+        const response = await axios.delete(`http://localhost:8083/bookreview/delete/${id}`);
+        console.log("Delete response:", response); // Debugging log
         if (response.status === 200) {
-          setMessage("All reviews deleted successfully.");
-          // Fetch the updated reviews list if necessary
-          setReview(null);  // Clear the review data if deleting all reviews
+          setMessage("Review deleted successfully.");
+          setReviews(reviews.filter((review) => review._id !== id));
         } else {
           setMessage("Failed to delete the review.");
         }
       } catch (error) {
+        console.error("Error deleting review:", error.response ? error.response.data : error.message);
         setMessage("An error occurred while deleting the review.");
       }
     }
   };
-  
 
-  const handleEdit = () => {
-    // Navigate to the edit page
-    navigate(`/edit-review/${id}`); // Updated to use navigate()
+  const handleUpdateSubmit = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8083/bookreview/update/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedBooking),
+      });
+
+      if (response.ok) {
+        setBookingStatus("Booking updated successfully!");
+        setTimeout(() => setBookingStatus(""), 3000);
+        setUpdatedBooking(null);
+        setShowPopup(true);
+      } else {
+        setBookingStatus("Failed to update booking.");
+      }
+    } catch (error) {
+      setBookingStatus("An error occurred while updating the booking.");
+      console.error("Error:", error);
+    }
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!review) {
-    return <div>No review found!</div>;
-  }
+  const handleEdit = (id) => {
+    const reviewToEdit = reviews.find((review) => review._id === id);
+    setUpdatedBooking(reviewToEdit);
+    navigate(`/edit-review/${id}`);  // You can adjust the URL based on your route setup
+  };
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f4f7fa", padding: "20px" }}>
       <Header />
       <main style={{ maxWidth: "1200px", margin: "0 auto", paddingTop: "50px" }}>
-        <section style={{ textAlign: "center", marginBottom: "50px", animation: "fadeIn 2s ease-out" }}>
+        <section style={{ textAlign: "center", marginBottom: "50px" }}>
           <h1 style={{ fontSize: "3rem", color: "#333", fontWeight: "600" }}>Review Details</h1>
         </section>
 
-        <section style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", gap: "20px", marginBottom: "50px" }}>
-          {/* Review Information Section */}
-          <div style={{ width: "45%", padding: "20px", backgroundColor: "#fff", borderRadius: "8px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
-            <h2 style={{ fontSize: "2rem", fontWeight: "600", marginBottom: "15px" }}>Book Information</h2>
-            <p style={{ fontSize: "1.1rem", color: "#333", marginBottom: "20px" }}>
-              <strong>Title:</strong> {review.title}
-            </p>
-            <p style={{ fontSize: "1.1rem", color: "#333", marginBottom: "20px" }}>
-              <strong>Review:</strong> {review.review}
-            </p>
-            <p style={{ fontSize: "1.1rem", color: "#333", marginBottom: "20px" }}>
-              <strong>Rating:</strong> {review.rating} / 5
-            </p>
-            <img
-              src={images} // You can use a book cover image or default image
-              alt={review.title}
-              style={{
-                width: "100%",
-                borderRadius: "8px",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                objectFit: "cover",
-              }}
-            />
-          </div>
-        </section>
-
-        {/* Update and Delete Actions */}
-        <section style={{ textAlign: "center", marginTop: "20px" }}>
-          <button
-            onClick={handleEdit}
-            style={{
-              padding: "12px 20px",
-              backgroundColor: "#28a745",
-              color: "#fff",
-              fontSize: "1.2rem",
-              border: "none",
-              borderRadius: "6px",
-              cursor: "pointer",
-              marginRight: "20px",
-            }}
-          >
-            Edit Review
-          </button>
-          <button
-            onClick={handleDelete}
-            style={{
-              padding: "12px 20px",
-              backgroundColor: "#d9534f",
-              color: "#fff",
-              fontSize: "1.2rem",
-              border: "none",
-              borderRadius: "6px",
-              cursor: "pointer",
-            }}
-          >
-            Delete Review
-          </button>
-        </section>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            backgroundColor: "#fff",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            borderRadius: "8px",
+            overflow: "hidden",
+          }}
+        >
+          <thead style={{ backgroundColor: "#007bff", color: "#fff" }}>
+            <tr>
+              <th style={{ padding: "12px", textAlign: "left" }}>Title</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>Review</th>
+              <th style={{ padding: "12px", textAlign: "center" }}>Rating</th>
+              <th style={{ padding: "12px", textAlign: "center" }}>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {reviews.map((review) => (
+              <tr key={review._id} style={{ borderBottom: "1px solid #ddd" }}>
+                <td style={{ padding: "12px" }}>{review.bookTitle}</td>
+                <td style={{ padding: "12px" }}>{review.review}</td>
+                <td style={{ padding: "12px", textAlign: "center" }}>{review.rating} / 5</td>
+                <td style={{ padding: "12px", textAlign: "center" }}>
+                  <button
+                    onClick={() => handleEdit(review._id)}
+                    style={{
+                      padding: "8px 12px",
+                      backgroundColor: "#28a745",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "6px",
+                      cursor: "pointer",
+                      marginRight: "10px",
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(review._id)}
+                    style={{
+                      padding: "8px 12px",
+                      backgroundColor: "#d9534f",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "6px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
         {message && (
           <div
